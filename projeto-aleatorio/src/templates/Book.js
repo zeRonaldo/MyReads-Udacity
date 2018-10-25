@@ -4,17 +4,16 @@ import React, { Component } from 'react';
 
 class Book extends Component{
     
-    loadBooks = (books) => {
-        books.map( (book) => {
-           return <li key={book.id}> {book.id} - {book.title}({book.pages} pages)</li>
-        })  
-    }
-
+ 
     render() {
+        console.log(this.props)
+        let comp = this.props.books.map( (book) => {
+            return <li key={book.id}> {book.id} - {book.title}({book.pages} pages)</li>
+        })  
         return(
             
             <ul>
-                {this.loadBooks(this.props.books)}
+                {comp}
             </ul>
 
         );

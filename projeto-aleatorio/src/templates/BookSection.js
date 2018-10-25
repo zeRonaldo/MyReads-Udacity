@@ -27,8 +27,10 @@ class BookSection extends Component {
 
     }
     render() {
+       
         return (
-            <div><Book books={this.state.books}/></div>
+            
+            <div className="bookSection"><Book books={this.state.books}/></div>
         );
     }
 }

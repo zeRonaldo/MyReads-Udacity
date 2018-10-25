@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 import BookSection from './BookSection'
 
 class Home extends Component {
+    state = {
+        
+    }
     render() {
         return(
             <div>
-                <h1>Hello World!</h1>
+                <header>
+                
+                </header>
                 <BookSection />
                 <Link to="/Search">Search Something!</Link>
             </div>

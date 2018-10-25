@@ -9,16 +9,10 @@ import Search from './templates/Search'
 class App extends Component {
   render() {
     return (
-      <div>
-
-  <Route exact path="/" render={Home} />
-       
-
-  <Route exact path="/search" render={Search} />
-    
-      
-
-      </div>
+    <div>
+      <Route exact path="/" component={Home}/>
+      <Route exact path="/search" component={Search}/>
+    </div>
       
     );
   }
