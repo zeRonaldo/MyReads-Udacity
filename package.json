@@ -1,0 +1,19 @@
+{
+  "name": "projeto-aleatorio",
+  "version": "1.0.0",
+  "description": "ProjetoAleatorio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeRonaldo/ProjetoAleatorio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeRonaldo/ProjetoAleatorio/issues"
+  },
+  "homepage": "https://github.com/zeRonaldo/ProjetoAleatorio#readme"
+}
