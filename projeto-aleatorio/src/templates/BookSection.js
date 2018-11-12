@@ -3,34 +3,15 @@ import React, { Component } from 'react';
 import Book from './Book'
 
 class BookSection extends Component {
-    state = {
-        books: [{
-            id: 1,
-            title : 'HP and something',
-            pages : 389
-        },
-        {
-            id: 2,
-            title: 'whatevs',
-            pages: 456
-        },
-        {
-            id: 3,
-            title: 'Dunno',
-            pages: 180
-        },
-        {
-            id: 4,
-            title: 'Some big inteligent book full of smart words and shit',
-            pages: 254
-        }]
-
-    }
+   
     render() {
        
         return (
             
-            <div className="bookSection"><Book books={this.state.books}/></div>
+            <div className="book-section">
+                <h4 className="books-category">{this.props.sectionName}</h4>
+                <Book books={this.props.books}/>                 
+            </div>
         );
     }
 }

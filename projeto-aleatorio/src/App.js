@@ -5,6 +5,9 @@ import './style/css/App.css';
 //Templates
 import Home from './templates/Home'
 import Search from './templates/Search'
+import Login from './templates/Login';
+import Registration from './templates/Register';
+import BookDetails from './templates/BookDetails'
 
 class App extends Component {
   render() {
@@ -12,6 +15,9 @@ class App extends Component {
     <div>
       <Route exact path="/" component={Home}/>
       <Route exact path="/search" component={Search}/>
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/register" component={Registration}/>
+      <Route exact path="/books/:id" component={BookDetails}/>
     </div>
       
     );
