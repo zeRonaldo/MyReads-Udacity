@@ -13,13 +13,9 @@ class Home extends Component {
     render() {
         return(
             <div>
-                {/* <Header />
-                <BookSection title="Lendo" />
-                <BookSection title="Lidos" />
-                <BookSection title="Lendo" />
-                <Link to="/Search">Search Something!</Link> 
-                <SplashHome/>*/}
-                <LoggedHome></LoggedHome>
+                
+                {/* <SplashHome/> */}
+                <LoggedHome/>
             </div>
             
         );

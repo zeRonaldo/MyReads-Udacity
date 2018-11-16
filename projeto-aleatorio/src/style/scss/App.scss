@@ -1,298 +1,135 @@
 // Colors
-$blue : #3d5c7a;
-$pink : #e67a82;
+$red : rgba(235, 87, 87, 1);
+$orange : rgba(242, 153, 74, 1);
 $darkgrey : #333;
 $lightgrey: #f2f2f2;
 $redTransluscent: rgba(235, 87, 87, 0.7);
 $orangeTransluscent: rgba(242, 153, 74, 0.7);
-//Reset
-body,td,th,p{
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
-	color: #333;
-	line-height: 1.5;
-}
-body {
-	background-color: #fff;
-	margin: 0;
-	display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-ul, li {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
-	color: #333;
-}
-a {
-	color: $blue;
-	text-decoration: none;
-}
-a:hover, a:focus {
-	color: $pink;
-	text-decoration: none;
-}
-a img{
-	border: none 0px #fff;
-}
-h1, h2, h3, h4, h5, h6 {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0 0 20px;
-}
-article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-input:not([type]):focus:not([readonly]), input[type="text"]:not(.browser-default):focus:not([readonly]), input[type="password"]:not(.browser-default):focus:not([readonly]), input[type="email"]:not(.browser-default):focus:not([readonly]), input[type="url"]:not(.browser-default):focus:not([readonly]), input[type="time"]:not(.browser-default):focus:not([readonly]), input[type="date"]:not(.browser-default):focus:not([readonly]), input[type="datetime"]:not(.browser-default):focus:not([readonly]), input[type="datetime-local"]:not(.browser-default):focus:not([readonly]), input[type="tel"]:not(.browser-default):focus:not([readonly]), input[type="number"]:not(.browser-default):focus:not([readonly]), input[type="search"]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
-
-    border-bottom: 1px solid $redTransluscent;
-    box-shadow: 0 1px 0 0 $redTransluscent;
-
-}
-nav{
-	background-color: $lightgrey;
-}
+$transparent: rgba(255,255,255, 0);
 //Header
-header nav{
-	position: fixed;
-	top: 0;
+nav{
+	z-index: 99;
+	background-color: $lightgrey;
+	ul li a {
+		display: flex;
+		color: $darkgrey;
+	}
+	.nav-wrapper{
+		div{
+			height: inherit;
+			.brand-logo{
+				.logo-nav{
+					height: 90%;
+					margin: 5px 10px;
+				}
+				height: inherit;
+			}
+			.material-icons{
+				color: $darkgrey;
+				padding: 0 7px;
+			}
+			
 
- a {
-	width: 100vw;
-	height: 70px;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
+		}
+	}
 	
-	background-color: $blue;
+}
+//Footer
+footer{
+	height: 2.5rem;
+	display: flex;
+	width: 100%;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	background-color: $darkgrey;
+	position: static;
+    bottom: 0;
+}
+//Splash-Home
+
+.indicators .indicator-item.active{
+	background-color: $red!important
+}
+.slider .slides{
+	background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
+
+	.active{
 	
 	
 	img{
-		width: 45px;
-		height: 45px;
-	}
-
-	h5{
-		margin: 0;
-    padding-left: 10px;
-    font-size: 1.3em;
-    color: #fff;
-	}
-
-}
-}
-
-//Login
-.background{
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	left: 0px;
-	top: 0px;
-	background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
-	
-	@media screen and (min-width: 768px) {
-		flex-direction: row;
-		flex-wrap: wrap;
-		padding: 5vh 25vw;
-	}
-	@media screen and (max-width: 768px) {
-		flex-direction: column;
-		flex-wrap: wrap;
-		padding: 5vh 5vw;
+		display: none!important
 	}
 }
-
-.logo-container{
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-content: center;
-	align-items: center;
-}
-.top-buttons{
-	.button{
-			width: 50%;
-			height: 3rem;
-			font-size: 1.3rem;
-			color: $darkgrey;
-			background-color: #fff;
-			border: none;
-			
-	}
-	.button:hover{
-				background-color: #fefefe;
-			transition: background .2s ease-in-out;
-			}
-	
-	.inactive{
-		background: $lightgrey;
-		box-shadow: inset 2px -2px 5px rgba(130, 130, 130, 0.16);
-		
-	}
-	.inactive:hover{
-		background-color: $orangeTransluscent;
-		transition: background .2s ease-in-out;
-	}
-	
-}
-
-.login-modal{
-	display: flex;
-	width: 100%;
-	background-color: #fff;
-	align-content: center;
-	justify-content: center;
-	flex-direction: column;
-}
-
-
-	input{
-		width: 50%;
-		border: none;
-		border-bottom: 1px solid $darkgrey;
-	}
-	input:focus{
-		border-bottom: 2px solid $redTransluscent;
-		transition: border-bottom .1s ease
-	}
-.modal-content{
-	margin: 2rem
-}
-.fields-container{
-	display: flex;
-
-	align-content: center;
-	
-	justify-content: center;
-	
-	flex-wrap: wrap;
-	
-	flex-direction: column;
-
-}
-input:not([type]):focus:not([readonly]) + label,
-input[type=text]:not(.browser-default):focus:not([readonly]) + label,
-input[type=password]:not(.browser-default):focus:not([readonly]) + label,
-input[type=email]:not(.browser-default):focus:not([readonly]) + label,
-input[type=url]:not(.browser-default):focus:not([readonly]) + label,
-input[type=time]:not(.browser-default):focus:not([readonly]) + label,
-input[type=date]:not(.browser-default):focus:not([readonly]) + label,
-input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
-input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
-input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
-input[type=number]:not(.browser-default):focus:not([readonly]) + label,
-input[type=search]:not(.browser-default):focus:not([readonly]) + label,
-textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: $redTransluscent;
-}
-input.valid:not([type]), input.valid:not([type]):focus, input.valid[type="text"]:not(.browser-default), input.valid[type="text"]:not(.browser-default):focus, input.valid[type="password"]:not(.browser-default), input.valid[type="password"]:not(.browser-default):focus, input.valid[type="email"]:not(.browser-default), input.valid[type="email"]:not(.browser-default):focus, input.valid[type="url"]:not(.browser-default), input.valid[type="url"]:not(.browser-default):focus, input.valid[type="time"]:not(.browser-default), input.valid[type="time"]:not(.browser-default):focus, input.valid[type="date"]:not(.browser-default), input.valid[type="date"]:not(.browser-default):focus, input.valid[type="datetime"]:not(.browser-default), input.valid[type="datetime"]:not(.browser-default):focus, input.valid[type="datetime-local"]:not(.browser-default), input.valid[type="datetime-local"]:not(.browser-default):focus, input.valid[type="tel"]:not(.browser-default), input.valid[type="tel"]:not(.browser-default):focus, input.valid[type="number"]:not(.browser-default), input.valid[type="number"]:not(.browser-default):focus, input.valid[type="search"]:not(.browser-default), input.valid[type="search"]:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
-
-    border-bottom: 1px solid $orangeTransluscent;
-    box-shadow: 0 1px 0 0 $orangeTransluscent;
-
-}
-label.active{
-	color: $redTransluscent;
-}
-.prefix.icon{
-	width: auto;
-	height: 27px;
-}
-.icon-big{
-	width: 35px;
-	height: 35px;
-}
-.logo-big{
-	width: 35%;
-	margin: 20px 0;
-}
-.button{
-	font-size: 1.2rem;
-	padding: 2vh 7rem;
-	border: none;
-	background-color: $orangeTransluscent;
-	color: #fff;
-	font-weight: bold;
-	margin: 0 auto;
-
-	
-}
-.button:hover{
-		background-color: $redTransluscent;
-		transition: background-color .1s ease;
-	}
-.button-row{
-	display: flex;
-}
-
-//Splash-Home
-.diagonal-bg{
-	height: 80vh;
-	background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
-	transform: rotate(-25deg);
-	transform: translate(-10vh);
-}
-
-//Book-Section
-.home{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-	flex-direction: column;
-	min-height: 100vh;
-}
-nav{
-	background-color: #fff;
-	display: flex;
-	align-items: center;
-    justify-content: space-between;
-	.logo{
-		height: 50px;
-		display: flex;
-		margin-right: 2vw
-	}
-	.search-bar{
-		height: 50px;
-		width: 50vw;
-		background: $lightgrey;
-		display: flex;
-		justify-content: space-between;
-		align-content: center;
-		align-items: center;
-		padding: 0 15px;
-		p{
-			font-size: 1.1rem;
-			opacity: 0.5;
-		}
-		img{
-			opacity: 0.5;
-		}
-	}
-	.sair{
-		display: flex;
-		align-items: center;
-		margin-right: 2vw;
-		p{
-			padding-left: 15px;
-			font-size: 1.25rem
-		}		
-
-	}
-}
+} 
 .content{
-	flex:1;
-	align-self: center;
+	flex: 1;
 }
+.button-container{
+	width: 100%;
+	display: flex;
+	padding: 2rem;
+	justify-content: center;
+	align-items: center;
+	
+	button{
+		margin: 0 1.2rem;
+		background-color: $red;
+		padding:0 7px 0 0;
+	
+
+		i{
+			padding: 0 7px;
+			background-color: $orange;
+		}
+		&:hover{
+			background-color: $redTransluscent;
+			i{
+				background-color: $orangeTransluscent;
+			}
+		}
+	}
+}
+
+//Login and Registration
+.background{
+	background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.card.horizontal .card-image img {
+   
+    max-height: 600px;
+}
+.tabs{display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+//Logged-Home
+.greetings{
+	font-size: 2rem
+}
+.profile-picture{
+	background-color: #333;
+	width:150px;
+	height: 150px;
+	border-radius: 50%
+
+}
+.home-header{
+	padding: 1.5rem 0;
+}
+.home  .content{
+	border-top: 1px solid $lightgrey 
+}
+
 .book-section{
-	background-color: $darkgrey;
-	width: 80vw;
 	margin: 20px;
 	display: flex;
     flex-direction: column;
@@ -300,14 +137,7 @@ nav{
 	align-items: center;
 	justify-content: space-evenly;
 
-	.books-category{
-		color: #fff;
-		font-size: 1.6rem;
-		background-color: $redTransluscent;
-		width: 100%;
-		text-align: center;
-		padding: 20px;
-	}
+	
 	ul{
 		display: flex;
 		justify-content: space-around;
@@ -336,7 +166,7 @@ nav{
 	h4{
 		font-size: 1.2rem;
 		text-align : center;
-		color: $pink;
+		color: $darkgrey;
 		margin-bottom: 0;
 		margin: 10px 0
 	}
@@ -344,56 +174,4 @@ nav{
 		font-size: 0.85rem;
 		color: #cecece;
 	}
-}
-.main-header-user{
-	width:100%;
-	background:linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
-	img{
-		width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: #cecece;
-    border: 1.2rem solid #fff;
-	}
-	h1{
-		color:$lightgrey;
-		font-size: 2.6rem
-	}
-	h5{
-		color:$lightgrey;
-		font-size: 1.8rem;
-		b{
-			color: $redTransluscent;
-		}
-	}
-}
-footer{
-	background-color: #333;
-	width: 100%;
-
-    bottom: 0;
-
-	p{
-		color:$lightgrey;
-		text-align: center;
-	}
-}
-
-//Book-Details
-
-.book-details{
-	display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-	width:100%;
-	height: 100vh;
-	background:linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
-}
-.container{
-	background:#fff;
-	padding: 20px;
-	margin: 30px;
-	flex:1
 }

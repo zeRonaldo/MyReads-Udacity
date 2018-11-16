@@ -9,7 +9,6 @@ class BookSection extends Component {
         return (
             
             <div className="book-section">
-                <h4 className="books-category">{this.props.sectionName}</h4>
                 <Book books={this.props.books}/>                 
             </div>
         );
