@@ -12,6 +12,7 @@ class Search extends Component{
         results: [],
         count: 0,
         message: <span>Type at least <b>3</b> letters</span>
+
     }
 
     updateQuery = (query) => {
@@ -41,14 +42,14 @@ fetchContent(){
     
    
         search(this.state.query).then( books => {
-            console.log(books);
+           
             if (books.error == "empty query"){
-                console.log('oops')
+                
             }else{
                books.map( book => {
                     
                     this.setState({
-                        results: [...this.state.results, book.title]
+                        results: [...this.state.results, book]
                     });
                 }); 
             }

@@ -92,9 +92,67 @@ footer {
   justify-content: center;
 }
 
+.greetings {
+  font-size: 2rem;
+}
+
 .profile-picture {
   background-color: #333;
   width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.home-header {
+  padding: 1.5rem 0;
+}
+
+.home .content {
+  border-top: 1px solid #f2f2f2;
+}
+
+.book-section {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.book-section ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: normal;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.book-mini {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: baseline;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 10px 20px;
+}
+.book-mini img {
+  height: 200px;
+  width: auto;
+}
+.book-mini h4 {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 0;
+  margin: 10px 0;
+}
+.book-mini h5 {
+  font-size: 0.85rem;
+  color: #cecece;
 }
 
 /*# sourceMappingURL=index.css.map */
