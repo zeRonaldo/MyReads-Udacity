@@ -14,9 +14,9 @@ import Tabs from 'react-materialize/lib/Tabs';
 
 class LoggedHome extends Component {
     state ={
-        userName:"José Ronaldo",
+        userName:"userName",
         userPoints: 100,
-        userTag: "@zeRonaldo",
+        userTag: "@usertag",
         readingShelf: [],
         readShelf:[],
         noShelf:[],
