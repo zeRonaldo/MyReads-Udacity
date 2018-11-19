@@ -37,7 +37,7 @@ class Book extends Component{
     }
     printAuthors = (authors) => {
         let authorChip = [];
-        if(authors.length > 0){
+        if(typeof authors !== 'undefined'){
             authors.map(author => {
             authorChip.push( <Chip>{author}</Chip> );
             }); 
@@ -129,7 +129,7 @@ class Book extends Component{
              index++
 
         
-           let cover = book.imageLinks.thumbnail ? <img src={book.imageLinks.thumbnail} className="cover" alt=""></img> : <img src={Logo} className="cover" alt=""></img>;
+           let cover = book.imageLinks ? <img src={book.imageLinks.thumbnail} className="cover" alt=""></img> : <img src={Logo} className="cover" alt=""></img>;
             return <li key={book.id} className="book-mini">
                         <div className="front">
 
