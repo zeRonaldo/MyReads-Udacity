@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 import {getAll} from '../BookApi';
 
 // Templates
 import Header from './Header'
 import FooterTemplate from './FooterTemplate'
 import BookSection from './BookSection'
-import { Row, Tab } from 'react-materialize';
-import Col from 'react-materialize/lib/Col';
-import Tabs from 'react-materialize/lib/Tabs';
+import { Row, Tab ,Col, Tabs} from 'react-materialize';
+
 
 
 
@@ -55,7 +54,7 @@ class LoggedHome extends Component {
                     <div className="container">
                         <Row className="home-header">
                             <Col s={12} m={6} className="center">
-                                <img src="" className="profile-picture"></img>
+                                <img src="" className="profile-picture" alt=""></img>
                             </Col>
                             <Col s={12} m={6}>
                                 <h1 className="greetings"> Hey, {this.state.userName}</h1>

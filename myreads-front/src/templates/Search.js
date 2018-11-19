@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {search} from '../BookApi';
-import Cross from '../res/icons/cross-out.png'
-import magGlass from '../res/icons/loupe.png'
 import Book from './Book';
 
 class Search extends Component{
@@ -16,6 +13,7 @@ class Search extends Component{
     }
 
     updateQuery = (query) => {
+        
         this.setState({
             query: query.trim()
         })
@@ -43,7 +41,7 @@ fetchContent(){
    
         search(this.state.query).then( books => {
            
-            if (books.error == "empty query"){
+            if (books.error === "empty query"){
                 
             }else{
                books.map( book => {
@@ -65,7 +63,7 @@ fetchContent(){
                     <div className="nav-wrapper">
                     <form>
                         <div className="input-field">
-                        <input id="search" type="search" value={this.state.query} onChange={event => this.updateQuery(event.target.value)} autofocus="true" required></input>
+                        <input id="search" type="search" value={this.state.query} onChange={event => setTimeout(this.updateQuery(event.target.value) , 1500)} autofocus="true" required></input>
                         <label className="label-icon" for="search"><i className="material-icons">search</i></label>
                         <i className="material-icons">close</i>
                         </div>

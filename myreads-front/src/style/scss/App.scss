@@ -47,6 +47,21 @@ footer{
     bottom: 0;
 }
 //Splash-Home
+.btn:hover, .btn-large:hover {
+    background-color: $redTransluscent;
+}
+.btn:focus, .btn-large:focus, .btn-floating:focus {
+    background-color: $red;
+}
+
+button:focus {
+    outline: none;
+    background-color: $redTransluscent;
+}
+.btn, .btn-large {
+   
+    background-color: $red;
+}
 
 .indicators .indicator-item.active{
 	background-color: $red!important
@@ -174,4 +189,63 @@ footer{
 		font-size: 0.85rem;
 		color: #cecece;
 	}
+}
+
+//Search
+.search-header{
+   
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+   
+	margin-bottom: 1rem;
+
+	h1{ 
+		background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
+		margin: 0;
+		font-size: 4.5rem;
+		padding: 4rem 0;
+		text-align: center;
+		color: $darkgrey;
+		width: 100%;
+		b{
+			color:$red;
+		}
+	}
+}
+.results{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+	align-content: space-evenly;
+	max-width: 100vw;
+	ul{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-self: center;
+	}
+}
+.results .book-mini {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-left: -10px;
+	margin-top: -10px;
+}
+.results .book-mini{
+	flex: 1 0 250px;
+  box-sizing: border-box;
+  
+  padding: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+   
+    color: $orange;
+  
 }

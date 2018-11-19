@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 import {Navbar , NavItem, Icon} from 'react-materialize';
 // Images
-import Logo from './../res/icons/logo.png'
-import Logout from './../res/icons/logout-grad.png'
-import magGlass from './../res/icons/loupe.png'
+import Logo from './../res/icons/logo.png';
 
 
 class Header extends Component{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Col, Card, CardTitle, Chip, Icon, Dropdown, Button, NavItem, Toast} from 'react-materialize'
-
+import { Chip, Icon, Dropdown, Button, NavItem} from 'react-materialize'
+import Logo from './../res/icons/logo.png';
 import {update} from '../BookApi';
 /* eslint-disable no-unused-expressions */
 
@@ -10,12 +10,13 @@ class Book extends Component{
         changed: 'nope',
         details: {}
     }
+    
     printRating = (rate) => {
         let stars = [];
         let i = 0;
 
-        if (typeof rate != 'undefined'){
-        if (rate % 1 != 0){
+        if (typeof rate !== 'undefined'){
+        if (rate % 1 !== 0){
             for(i ; i < rate-1; i ++ ){
                 stars.push( <Icon>star</Icon>) ;
             }
@@ -36,9 +37,14 @@ class Book extends Component{
     }
     printAuthors = (authors) => {
         let authorChip = [];
-        authors.map(author => {
+        if(authors.length > 0){
+            authors.map(author => {
             authorChip.push( <Chip>{author}</Chip> );
-        });
+            }); 
+        }else{
+            authorChip.push( <Chip>No Author info</Chip> );
+        }
+       
 
         let result = <div>
         {authorChip}
@@ -54,13 +60,14 @@ class Book extends Component{
     }
     
     printShelfSelector = (index, selected, book) => {
-        if (typeof selected != 'undefined'){
+        if (typeof selected !== 'undefined'){
                 return <Dropdown trigger={
                     <Button>Move to</Button>
                 }>
                     <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "read")}}>Read</NavItem>
                     <NavItem onClick={ (event) => {this.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
                     <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
+                    <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "")}}>Remove Book</NavItem>
                 </Dropdown>;
                 
         }else{
@@ -70,20 +77,23 @@ class Book extends Component{
                 <NavItem onClick={ (event) => {this.changeShelf(event,index,book, "read")}}>Read</NavItem>
                 <NavItem onClick={ (event) => {this.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
                 <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
+                
             </Dropdown>;
         }
     }
 
     changeShelf (event,index, book, shelf) {
         event.preventDefault();
-        let bookid = {
-            id: book.id
-        }
-        update(bookid,shelf).then( () => {
-            this.props.books[index].shelf = shelf;
-            console.log(this.props.books[index]);
+        if(book.shelf !== shelf){
+            let bookid = {
+                id: book.id
+            }
+            update(bookid,shelf).then( () => {
+                this.props.books[index].shelf = shelf;
+                console.log(this.props.books[index]);
 
-        });
+            });
+        }       
         
     }
     
@@ -118,18 +128,12 @@ class Book extends Component{
              </div>;
              index++
 
-        //    return <Col s={12} m={4} l={3} className="book-mini">
-                
-        //         {/* <Card header={<CardTitle reveal image={book.imageLinks.thumbnail} waves='light'/>}
-        //             title={book.title.substr(0,30)}
-        //             reveal={content}>
-        //             <p><Link to={'/books/' + book.id} >More details</Link></p>
-        //         </Card> */}
-        //     </Col>
-           
+        
+           let cover = book.imageLinks.thumbnail ? <img src={book.imageLinks.thumbnail} className="cover" alt=""></img> : <img src={Logo} className="cover" alt=""></img>;
             return <li key={book.id} className="book-mini">
                         <div className="front">
-                            <img src={book.imageLinks.thumbnail} className="cover"></img>
+
+                           {cover}
                                                     
                         </div>
                         <div className="back"> 
