@@ -2,7 +2,7 @@ this project as created as part of udacity's nanodegree program for Advanced Fro
 
 this project is bootstrapped with node.js(npm) and the create-react app was used as starter point.
 
-##TL;DR
+## TL;DR
 
 - using your node enabled command line tool access the folder inside the repository main folder
 - enter the 'npm install' wait for the installation of dependencies to finish
