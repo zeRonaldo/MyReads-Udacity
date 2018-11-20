@@ -1,5 +1,5 @@
 {
-  "name": "myread-front",
+  "name": "myreads-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,5 +24,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1"
+  }
 }

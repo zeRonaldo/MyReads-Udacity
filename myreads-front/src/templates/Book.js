@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Chip, Icon, Dropdown, Button, NavItem} from 'react-materialize'
 import Logo from './../res/icons/logo.png';
-import {update} from '../BookApi';
+
 /* eslint-disable no-unused-expressions */
 
 class Book extends Component{
@@ -64,38 +64,25 @@ class Book extends Component{
                 return <Dropdown trigger={
                     <Button>Move to</Button>
                 }>
-                    <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "read")}}>Read</NavItem>
-                    <NavItem onClick={ (event) => {this.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
-                    <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
-                    <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "")}}>Remove Book</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "read")}}>Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "")}}>Remove Book</NavItem>
                 </Dropdown>;
                 
         }else{
            return <Dropdown trigger={
                 <Button>Put on myShelves</Button>
             }>
-                <NavItem onClick={ (event) => {this.changeShelf(event,index,book, "read")}}>Read</NavItem>
-                <NavItem onClick={ (event) => {this.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
-                <NavItem onClick={ (event) => {this.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
+                <NavItem onClick={ (event) => {this.props.changeShelf(event,index,book, "read")}}>Read</NavItem>
+                <NavItem onClick={ (event) => {this.props.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
+                <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
                 
             </Dropdown>;
         }
     }
 
-    changeShelf (event,index, book, shelf) {
-        event.preventDefault();
-        if(book.shelf !== shelf){
-            let bookid = {
-                id: book.id
-            }
-            update(bookid,shelf).then( () => {
-                this.props.books[index].shelf = shelf;
-                console.log(this.props.books[index]);
-
-            });
-        }       
-        
-    }
+   
     
     render() {
        console.log(this.state.changed);

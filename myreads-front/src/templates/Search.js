@@ -3,6 +3,7 @@ import {search} from '../BookApi';
 import {Link} from 'react-router-dom';
 import Book from './Book';
 import Icon from 'react-materialize/lib/Icon';
+import _ from 'lodash'
 
 class Search extends Component{
     
@@ -14,20 +15,6 @@ class Search extends Component{
 
     }
 
-     debounce(func, wait, immediate) {
-        var timeout;
-        return function() {
-            var context = this, args = arguments;
-            var later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
-            var callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
-        };
-    };
 
     updateQuery = (query) => {
         let previousQuery = this.state.query;
@@ -46,7 +33,7 @@ class Search extends Component{
                     message: text
                 })
             }else{
-                this.debounce(  this.fetchContent() , 1000);
+                _.debounce(this.fetchContent(), 1000)
                 this.setState({
                     message: text
                 })

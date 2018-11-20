@@ -9,7 +9,7 @@ class BookSection extends Component {
         return (
             
             <div className="book-section">
-                <Book books={this.props.books}/>                 
+                <Book books={this.props.books} changeShelf={this.props.updateShelf}/>                 
             </div>
         );
     }

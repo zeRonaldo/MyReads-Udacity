@@ -21,7 +21,7 @@ class BookDetails extends Component {
        
         return (
             
-            <div className="book-details">
+            <div className="card book-details">
                 <Header/>
                 <div className="container row">
                     <div className="cover col s12 m4">

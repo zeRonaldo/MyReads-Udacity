@@ -7,7 +7,7 @@ import Header from './Header'
 import FooterTemplate from './FooterTemplate'
 import BookSection from './BookSection'
 import { Row, Tab ,Col, Tabs} from 'react-materialize';
-
+import {update} from '../BookApi';
 
 
 
@@ -46,6 +46,64 @@ class LoggedHome extends Component {
         })
     }
 
+    changeShelf (event,index, book, shelf) {
+        event.preventDefault();
+        if(book.shelf !== shelf){
+            let bookid = {
+                id: book.id,
+                shelf: book.shelf
+            }
+            update(bookid,shelf).then( () => {
+                switch(bookid.shelf){
+                    case 'reading':
+                        this.setState({
+                            readingShelf: this.state.readingShelf.filter( (value) => {
+                                return value !== book;
+                            })
+                        })
+                        break
+                    case 'read':
+                        this.setState({
+                            readingShelf: this.state.readShelf.filter( (value) => {
+                                return value !== book;
+                            })
+                        })
+                        break
+                    case 'wantToRead':
+                        this.setState({
+                            readingShelf: this.state.wantToShelf.filter( (value) => {
+                                return value !== book;
+                            })
+                        })
+                        break
+                    default:
+                        break
+                   
+                        
+                }
+                switch(shelf){
+                    case 'reading':
+                        this.setState({
+                            readingShelf: [...this.state.readingShelf, book] });
+                        break
+                    case 'read':
+                        this.setState({
+                            readingShelf: [...this.state.readShelf, book] });
+                        break
+                    case 'wantToRead':
+                        this.setState({
+                            readingShelf: [...this.state.wantToShelf, book] });
+                        break
+                    default:
+                        break 
+                    
+                }
+
+            });
+        }       
+        
+    }
+
     render() {
         return(
             <div className="home">
@@ -69,13 +127,13 @@ class LoggedHome extends Component {
                         <div className="content">
                             <Tabs >
                                 <Tab title="Reading" active>
-                                    <BookSection sectionName="Lendo" books={this.state.readingShelf} />
+                                    <BookSection sectionName="Lendo" books={this.state.readingShelf} updateShelf={this.changeShelf} />
                                 </Tab>
                                 <Tab title="Read">
-                                    <BookSection sectionName="Lidos" books={this.state.readShelf} />
+                                    <BookSection sectionName="Lidos" books={this.state.readShelf} updateShelf={this.changeShelf} />
                                 </Tab>
                                 <Tab title="Want To Read">
-                                    <BookSection sectionName="Quero Ler" books={this.state.wantToShelf} />
+                                    <BookSection sectionName="Quero Ler" books={this.state.wantToShelf} updateShelf={this.changeShelf} />
                                 </Tab>
                             </Tabs>
                             
