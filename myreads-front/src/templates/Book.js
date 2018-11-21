@@ -59,24 +59,25 @@ class Book extends Component{
         return result.getFullYear();
     }
     
-    printShelfSelector = (index, selected, book) => {
+    printShelfSelector = ( selected, book) => {
+       
         if (typeof selected !== 'undefined'){
                 return <Dropdown trigger={
                     <Button>Move to</Button>
                 }>
-                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "read")}}>Read</NavItem>
-                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
-                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
-                    <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "")}}>Remove Book</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "read")}}>Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,book, "currentlyReading")}}>Reading</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "wantToRead")}}>Want to Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "none")}}>Remove Book</NavItem>
                 </Dropdown>;
                 
         }else{
            return <Dropdown trigger={
                 <Button>Put on myShelves</Button>
             }>
-                <NavItem onClick={ (event) => {this.props.changeShelf(event,index,book, "read")}}>Read</NavItem>
-                <NavItem onClick={ (event) => {this.props.changeShelf(event,index,book, "currentlyReading")}}>Reading</NavItem>
-                <NavItem onClick={ (event) => {this.props.changeShelf(event,index, book, "wantToRead")}}>Want to Read</NavItem>
+                <NavItem onClick={ (event) => {this.props.changeShelf(event,book, "read")}}>Read</NavItem>
+                <NavItem onClick={ (event) => {this.props.changeShelf(event,book, "currentlyReading")}}>Reading</NavItem>
+                <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "wantToRead")}}>Want to Read</NavItem>
                 
             </Dropdown>;
         }
@@ -85,7 +86,7 @@ class Book extends Component{
    
     
     render() {
-       console.log(this.state.changed);
+      
        let index = 0;
         let comp = this.props.books.map( (book) => {
             
@@ -106,7 +107,7 @@ class Book extends Component{
                     Year: {this.printYear(book.publishedDate)}
                 </div>
                 <div className="center">
-                    {this.printShelfSelector(index, book.shelf, book)}
+                    {this.printShelfSelector( book.shelf, book)}
                     <p></p>
                             <Link to={'/books/'+ book.id}>
                                 <Button >More.. </Button>

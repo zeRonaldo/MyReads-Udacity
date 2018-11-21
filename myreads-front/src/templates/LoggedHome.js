@@ -16,95 +16,53 @@ class LoggedHome extends Component {
         userName:"userName",
         userPoints: 100,
         userTag: "@usertag",
-        readingShelf: [],
-        readShelf:[],
-        noShelf:[],
-        wantToShelf: []
+        books: [],
+        arrayOfShelves : [
+            {
+                name: 'wantToRead',
+                sectionName: 'Want To',
+                tabTitle: 'Want To Read'
+            },
+            {
+                name: 'read',
+                sectionName: 'Read',
+                tabTitle: 'Read'
+            },
+            {
+                name: 'currentlyReading',
+                sectionName: 'Reading',
+                tabTitle: 'Reading'
+            },
+        ]
     }
     componentDidMount(){
         getAll().then( books => {
                 books.map( book => {
-                    console.log(book);
-                    if(book.shelf === 'currentlyReading'){
-                        this.setState({
-                            readingShelf: [...this.state.readingShelf, book]
-                        });
-                    }else if (book.shelf === 'read'){
-                        this.setState({
-                            readShelf: [...this.state.readShelf, book]
-                        });
-                    }else if(book.shelf === 'wantToRead'){
-                        this.setState({
-                            wantToShelf: [...this.state.wantToShelf, book]
-                        });
-                    }else{
-                        this.setState({
-                            noShelf: [...this.state.noShelf, book]
-                        })
-                    };
+                    this.setState({
+                        books: [...this.state.books, book]
+                    })
                 });
         })
     }
 
-    changeShelf (event,index, book, shelf) {
+    changeShelf = (event, book, shelf) =>{
         event.preventDefault();
         if(book.shelf !== shelf){
-            let bookid = {
-                id: book.id,
-                shelf: book.shelf
-            }
-            update(bookid,shelf).then( () => {
-                switch(bookid.shelf){
-                    case 'reading':
-                        this.setState({
-                            readingShelf: this.state.readingShelf.filter( (value) => {
-                                return value !== book;
-                            })
-                        })
-                        break
-                    case 'read':
-                        this.setState({
-                            readingShelf: this.state.readShelf.filter( (value) => {
-                                return value !== book;
-                            })
-                        })
-                        break
-                    case 'wantToRead':
-                        this.setState({
-                            readingShelf: this.state.wantToShelf.filter( (value) => {
-                                return value !== book;
-                            })
-                        })
-                        break
-                    default:
-                        break
-                   
-                        
-                }
-                switch(shelf){
-                    case 'reading':
-                        this.setState({
-                            readingShelf: [...this.state.readingShelf, book] });
-                        break
-                    case 'read':
-                        this.setState({
-                            readingShelf: [...this.state.readShelf, book] });
-                        break
-                    case 'wantToRead':
-                        this.setState({
-                            readingShelf: [...this.state.wantToShelf, book] });
-                        break
-                    default:
-                        break 
-                    
-                }
-
+            let booksWithoutChange = this.state.books.filter( (value) => {
+                return value !== book;
             });
-        }       
-        
+            update(book, shelf).then( () => {
+                book.shelf = shelf;
+                booksWithoutChange.push(book);
+                this.setState({
+                    books: booksWithoutChange
+                });
+            });
+        }
     }
 
     render() {
+
         return(
             <div className="home">
                 
@@ -126,15 +84,13 @@ class LoggedHome extends Component {
                         
                         <div className="content">
                             <Tabs >
-                                <Tab title="Reading" active>
-                                    <BookSection sectionName="Lendo" books={this.state.readingShelf} updateShelf={this.changeShelf} />
-                                </Tab>
-                                <Tab title="Read">
-                                    <BookSection sectionName="Lidos" books={this.state.readShelf} updateShelf={this.changeShelf} />
-                                </Tab>
-                                <Tab title="Want To Read">
-                                    <BookSection sectionName="Quero Ler" books={this.state.wantToShelf} updateShelf={this.changeShelf} />
-                                </Tab>
+                                {this.state.arrayOfShelves.map( shelf => (
+                                    <Tab title={shelf.tabTitle} active>
+                                        <BookSection sectionName={shelf.sectionName} books={this.state.books.filter( book => (book.shelf === shelf.name))} changeShelf={this.changeShelf} />
+                                    </Tab>
+                                ))}
+                                
+                               
                             </Tabs>
                             
                         </div>

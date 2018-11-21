@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Book from './Book';
 import Icon from 'react-materialize/lib/Icon';
 import _ from 'lodash'
+import {update, getAll} from '../BookApi';
 
 class Search extends Component{
     
@@ -11,10 +12,19 @@ class Search extends Component{
         query: '',
         results: [],
         count: 0,
-        message: <span>Type at least <b>3</b> letters</span>
-
+        message: <span>Type at least <b>3</b> letters</span>,
+        books: []
     }
 
+    componentDidMount(){
+        getAll().then( books => {
+                books.map( book => {
+                    this.setState({
+                        books: [...this.state.books, book]
+                    })
+                });
+        })
+    }
 
     updateQuery = (query) => {
         let previousQuery = this.state.query;
@@ -24,19 +34,15 @@ class Search extends Component{
         })
         
         if( query.length >= 3 ){
-            text = <span><b>{this.state.count}</b> Search results for <b>{query}</b></span>;
+            
 
             if(previousQuery < query.length){
                
                 this.clearSearch();
-                this.setState({
-                    message: text
-                })
+               
             }else{
-                _.debounce(this.fetchContent(), 1000)
-                this.setState({
-                    message: text
-                })
+                this.fetchContent()
+                
             }
             
         }else{
@@ -49,26 +55,31 @@ class Search extends Component{
     }
     
     
-fetchContent(){
+fetchContent = () => {
     
     this.clearSearch();
-        search(this.state.query.trim()).then( books => {
+      search(this.state.query.trim()).then( books => {
            
             if (books.error === "empty query"){
                 this.clearSearch();
-                return 1;
             }else{
+            this.clearSearch();
                books.map( book => {
+                
                     if (!this.state.results.includes(book)){
                         this.setState({
+                            count: books.length,
                             results: [...this.state.results, book]
                         });
+                        let text = <span><b>{this.state.count}</b> Search results for <b>{this.state.query}</b></span>;
+                        this.setState({
+                            message: text
+                        })
                     }
                    
                 }); 
-                this.setState({
-                    count: books.length
-                })
+              
+               
                 return 0;
             }
             
@@ -76,14 +87,37 @@ fetchContent(){
     
 }
 
-clearSearch(){
+clearSearch = () => {
     this.setState({
         results: [],
         count: 0
 
     })
-    console.log(this.state.results.length);
+    
 }
+
+changeShelf = (event, book, shelf) =>{
+    event.preventDefault();
+    
+    if(book.shelf !== shelf){
+        let booksWithoutChange = this.state.results.filter( (value) => {
+        return value !== book;
+    });
+ 
+        update(book, shelf).then(() => {
+            book.shelf = shelf;
+            this.setState({
+                    results: booksWithoutChange
+                }
+            )
+            window.Materialize.toast(book.title+' added to '+shelf, 10000)
+        });
+
+        
+    }
+}
+
+
     render(){
         return(
             <div>
@@ -117,7 +151,7 @@ clearSearch(){
                     <h1>{this.state.message}</h1>
                 </div>
                 <div className="results">
-                    <Book books={this.state.results}/>
+                    <Book books={this.state.results} changeShelf={this.changeShelf}/>
                 </div>
             </div>
         );
