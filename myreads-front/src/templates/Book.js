@@ -117,7 +117,7 @@ class Book extends Component{
              index++
 
         
-           let cover = book.imageLinks ? <img src={book.imageLinks.thumbnail} className="cover" alt=""></img> : <img src={Logo} className="cover" alt=""></img>;
+           let cover = book.imageLinks ? <img src={book.imageLinks.thumbnail} className="cover" alt=""></img> : <div className="no-cover"><img src={Logo} alt=""></img><p>No cover available for this book </p> </div>;
             return <li key={book.id} className="book-mini">
                         <div className="front">
 

@@ -132,22 +132,9 @@ changeShelf = (event, book, shelf) =>{
                     </form>
                     </div>
                 </nav>
-               {/* <nav>
-                    <div className="nav-wrapper">
-                    <form>
-                        <div className="input-field">
-                        <input id="search" type="search" value={this.state.query} onChange={event => this.updateQuery(event.target.value)} autofocus="true"  required></input>
-                        <label className="label-icon" for="search"><img src={magGlass} className="icon-big" alt=""></img></label>
-                        <Link to="/">
-                            <img src={Cross} className="icon-big" alt=""></img>
-                        </Link>
-                        </div>
-                    </form>
-                    </div>
-                </nav> */}
-                
+              
                 <div className="search-header">
-                    <Link to="/"><Icon>arrow_left</Icon>Go back Home</Link>
+                    <Link to="/" className="back-home"><Icon>arrow_left</Icon>Go back Home</Link>
                     <h1>{this.state.message}</h1>
                 </div>
                 <div className="results">

@@ -1,7 +1,7 @@
 // Colors
 $red : rgba(235, 87, 87, 1);
 $orange : rgba(242, 153, 74, 1);
-$darkgrey : #333;
+$darkgrey : #444;
 $lightgrey: #f2f2f2;
 $redTransluscent: rgba(235, 87, 87, 0.7);
 $orangeTransluscent: rgba(242, 153, 74, 0.7);
@@ -198,13 +198,25 @@ button:focus {
     align-content: center;
     justify-content: center;
     align-items: center;
-   
+   flex-direction: column;
 	margin-bottom: 1rem;
+	background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
 
+	.back-home{
+
+		display: flex;
+		padding: 1rem 1rem;
+		width: 100%;
+		text-align: center;
+		background-color: $redTransluscent;
+		color: #fff;
+		font-weight: bold;
+	
+	}
 	h1{ 
-		background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
+		
 		margin: 0;
-		font-size: 4.5rem;
+		font-size: 2.8rem;
 		padding: 4rem 0;
 		text-align: center;
 		color: $darkgrey;
@@ -241,11 +253,29 @@ button:focus {
   box-sizing: border-box;
   
   padding: 10px;
-	margin-left: 10px;
+	margin-left: 20px;
 	margin-top: 10px;
 }
 .dropdown-content li>a, .dropdown-content li>span {
    
     color: $orange;
   
+}
+
+//SEARCH
+.no-cover{
+    max-width: 175px;
+    height: 210px;
+    background-color: #ccc;
+    color: #777;
+    font-size: 1.4rem;
+    padding: 1rem 0.5rem;
+	text-align: center;
+	p{
+		margin: 0;
+	}
+	img{
+		width: 150px;
+		height: auto;
+	}
 }
