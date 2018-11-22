@@ -77,6 +77,11 @@ button:focus {
 	}
 }
 } 
+.splash-home{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
 .content{
 	flex: 1;
 }
@@ -127,6 +132,15 @@ button:focus {
 }
 
 //Logged-Home
+.home{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	min-height: 100vh;
+	.container{
+		flex: 1;
+	}
+}
 .greetings{
 	font-size: 2rem
 }
@@ -278,4 +292,54 @@ button:focus {
 		width: 150px;
 		height: auto;
 	}
+}
+
+//DETAILS
+.book-details{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	min-height: 100vh;
+	background: linear-gradient(180deg, $redTransluscent 0%, $orangeTransluscent 100%);
+	.container.row{
+		flex: 1 ;
+		align-self: center;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		.cover{
+			padding: 0;
+			padding-right: 1.8rem;
+			img{
+				width: 100%;
+				padding: 0;
+			}
+		}
+		.detail-links{
+			display: flex;
+			align-content: space-evenly;
+			justify-content: space-around;
+			a{
+				color: $lightgrey;
+			}
+			
+		}
+	}
+}
+
+.center button{
+	margin:0.5rem 0;
+}
+.dropdown-content{
+	display: none!important
+}
+.dropdown-content.active{
+	display: inline-block!important
+}
+
+.current-shelf{
+	font-weight: bold;
+}
+.current-shelf a::before{
+	content: '> '
 }

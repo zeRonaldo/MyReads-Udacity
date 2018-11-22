@@ -61,6 +61,12 @@ button:focus {
   display: none !important;
 }
 
+.splash-home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .content {
   flex: 1;
 }
@@ -107,6 +113,16 @@ button:focus {
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+.home .container {
+  flex: 1;
 }
 
 .greetings {
@@ -253,6 +269,57 @@ button:focus {
 .no-cover img {
   width: 150px;
   height: auto;
+}
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(235, 87, 87, 0.7) 0%, rgba(242, 153, 74, 0.7) 100%);
+}
+.book-details .container.row {
+  flex: 1;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.book-details .container.row .cover {
+  padding: 0;
+  padding-right: 1.8rem;
+}
+.book-details .container.row .cover img {
+  width: 100%;
+  padding: 0;
+}
+.book-details .container.row .detail-links {
+  display: flex;
+  align-content: space-evenly;
+  justify-content: space-around;
+}
+.book-details .container.row .detail-links a {
+  color: #f2f2f2;
+}
+
+.center button {
+  margin: 0.5rem 0;
+}
+
+.dropdown-content {
+  display: none !important;
+}
+
+.dropdown-content.active {
+  display: inline-block !important;
+}
+
+.current-shelf {
+  font-weight: bold;
+}
+
+.current-shelf a::before {
+  content: "> ";
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -63,10 +63,11 @@ fetchContent = () => {
             if (books.error === "empty query"){
                 this.clearSearch();
             }else{
-            this.clearSearch();
+               this.clearSearch();
                books.map( book => {
-                
-                    if (!this.state.results.includes(book)){
+                    const bookExist = this.state.books.find( bookInShelf => bookInShelf.id === book.id);
+                    if (bookExist){
+                        book.shelf = bookExist.shelf;
                         this.setState({
                             count: books.length,
                             results: [...this.state.results, book]
@@ -74,9 +75,20 @@ fetchContent = () => {
                         let text = <span><b>{this.state.count}</b> Search results for <b>{this.state.query}</b></span>;
                         this.setState({
                             message: text
-                        })
-                    }
-                   
+                        });
+                        return book;
+                    } else {
+                        book.shelf ='none';
+                        this.setState({
+                            count: books.length,
+                            results: [...this.state.results, book]
+                        });
+                        let text = <span><b>{this.state.count}</b> Search results for <b>{this.state.query}</b></span>;
+                        this.setState({
+                            message: text
+                        });
+                        return book;
+                    }                   
                 }); 
               
                

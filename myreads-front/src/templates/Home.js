@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Templates
 
 import LoggedHome from './LoggedHome';
-
+import SplashHome from './SplashHome';
 class Home extends Component {
     state = {
         
@@ -12,8 +12,12 @@ class Home extends Component {
         return(
             <div>
                 
-                {/* <SplashHome/> */}
-                <LoggedHome/>
+                
+                    <LoggedHome/>
+                    {/* <SplashHome/> 
+               */}
+                 
+                
             </div>
             
         );

@@ -61,7 +61,36 @@ class Book extends Component{
     
     printShelfSelector = ( selected, book) => {
        
-        if (typeof selected !== 'undefined'){
+        if ((typeof selected !== 'undefined') && (book.shelf !== 'none')){
+            switch (book.shelf){
+                case 'read':
+                return <Dropdown trigger={
+                    <Button>Move to</Button>
+                }>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "read")}} className="current-shelf">Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,book, "currentlyReading")}} >Reading</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "wantToRead")}}>Want to Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "none")}}>Remove Book</NavItem>
+                </Dropdown>;
+                case 'currentlyReading':
+                return <Dropdown trigger={
+                    <Button>Move to</Button>
+                }>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "read")}}>Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,book, "currentlyReading")}} className="current-shelf">Reading</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "wantToRead")}}>Want to Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "none")}}>Remove Book</NavItem>
+                </Dropdown>;
+                case 'wantToRead':
+                return <Dropdown trigger={
+                    <Button>Move to</Button>
+                }>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "read")}}>Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event,book, "currentlyReading")}}>Reading</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "wantToRead")}} className="current-shelf" >Want to Read</NavItem>
+                    <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "none")}}>Remove Book</NavItem>
+                </Dropdown>;
+                default:
                 return <Dropdown trigger={
                     <Button>Move to</Button>
                 }>
@@ -70,6 +99,8 @@ class Book extends Component{
                     <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "wantToRead")}}>Want to Read</NavItem>
                     <NavItem onClick={ (event) => {this.props.changeShelf(event, book, "none")}}>Remove Book</NavItem>
                 </Dropdown>;
+            }
+                
                 
         }else{
            return <Dropdown trigger={
@@ -108,8 +139,9 @@ class Book extends Component{
                 </div>
                 <div className="center">
                     {this.printShelfSelector( book.shelf, book)}
-                    <p></p>
-                            <Link to={'/books/'+ book.id}>
+                </div>
+                <div  className="center">
+                <Link to={'/books/'+ book.id}>
                                 <Button >More.. </Button>
                             </Link>
                 </div>

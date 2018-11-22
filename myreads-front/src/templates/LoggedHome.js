@@ -45,21 +45,13 @@ class LoggedHome extends Component {
         })
     }
 
-    changeShelf = (event, book, shelf) =>{
-        event.preventDefault();
-        if(book.shelf !== shelf){
-            let booksWithoutChange = this.state.books.filter( (value) => {
-                return value !== book;
-            });
-            update(book, shelf).then( () => {
-                book.shelf = shelf;
-                booksWithoutChange.push(book);
-                this.setState({
-                    books: booksWithoutChange
-                });
-            });
-        }
-    }
+    changeShelf = (event, book, shelf) => {
+        update(book, shelf).then(() => {
+          book.shelf = shelf;
+          const books = this.state.books.filter(b => b.id !== book.id).concat(book);
+          this.setState({ books });
+        });
+      };
 
     render() {
 

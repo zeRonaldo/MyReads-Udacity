@@ -14,7 +14,7 @@ class SplashHome extends Component {
     
     render() {
         return(
-            <div>
+            <div className="splash-home">
                 <Header isLogged={true} />
                     
                     <div className="content">
