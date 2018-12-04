@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/MyReads-Udacity/static/css/main.04d3874d.chunk.css"
   },
   {
-    "revision": "8b153c8f16aa5e89ebba15a59326ebe5",
+    "revision": "72e81f064fc9a295f32e371bad2065d6",
     "url": "/MyReads-Udacity/index.html"
   }
 ];
