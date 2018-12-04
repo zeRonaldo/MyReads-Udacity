@@ -40,7 +40,8 @@ printAuthors = (authors) => {
     let authorChip = [];
     if(typeof authors !== 'undefined'){
         authors.map(author => {
-        authorChip.push( <Chip>{author}</Chip> );
+            authorChip.push( <Chip>{author}</Chip> );
+            return 0;
         }); 
     }else{
         authorChip.push( <Chip>No Author info</Chip> );

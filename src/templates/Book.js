@@ -40,6 +40,7 @@ class Book extends Component{
         if(typeof authors !== 'undefined'){
             authors.map(author => {
             authorChip.push( <Chip>{author}</Chip> );
+            return authorChip;
             }); 
         }else{
             authorChip.push( <Chip>No Author info</Chip> );
@@ -118,7 +119,7 @@ class Book extends Component{
     
     render() {
       
-       let index = 0;
+       
         let comp = this.props.books.map( (book) => {
             
             let content = <div>
@@ -146,7 +147,7 @@ class Book extends Component{
                             </Link>
                 </div>
              </div>;
-             index++
+          
 
         
            let cover = book.imageLinks ? <img src={book.imageLinks.thumbnail} className="cover" alt=""></img> : <div className="no-cover"><img src={Logo} alt=""></img><p>No cover available for this book </p> </div>;

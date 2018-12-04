@@ -40,7 +40,8 @@ class LoggedHome extends Component {
                 books.map( book => {
                     this.setState({
                         books: [...this.state.books, book]
-                    })
+                    });
+                    return 0;
                 });
         })
     }

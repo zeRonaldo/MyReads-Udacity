@@ -3,7 +3,6 @@ import {search} from '../BookApi';
 import {Link} from 'react-router-dom';
 import Book from './Book';
 import Icon from 'react-materialize/lib/Icon';
-import _ from 'lodash'
 import {update, getAll} from '../BookApi';
 
 class Search extends Component{
@@ -22,6 +21,7 @@ class Search extends Component{
                     this.setState({
                         books: [...this.state.books, book]
                     })
+                    return 0;
                 });
         })
     }
@@ -52,6 +52,7 @@ class Search extends Component{
                 message: text
             })
         }
+        return 0;
     }
     
     
